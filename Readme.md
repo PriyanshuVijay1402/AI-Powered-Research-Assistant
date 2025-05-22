@@ -16,7 +16,6 @@ This project is a multi-agent AI assistant built with [CrewAI](https://github.co
 - LangChain (LLM integration)
 - OpenRouter API (Mistral-7B)
 - arXiv API
-- Streamlit UI
 
 ## 📦 Setup
 
@@ -29,5 +28,5 @@ venv\Scripts\activate  # Windows
 source venv/bin/activate  # macOS/Linux
 
 pip install -r requirements.txt
-streamlit run app.py
+python main.py
 
