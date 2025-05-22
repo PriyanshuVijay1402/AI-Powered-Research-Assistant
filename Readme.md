@@ -28,5 +28,8 @@ venv\Scripts\activate  # Windows
 source venv/bin/activate  # macOS/Linux
 
 pip install -r requirements.txt
-python main.py
+python server.py
+```
+After it, follow the link in the terminal and the website will open, give your query and it will produce the desired results.
+
 
