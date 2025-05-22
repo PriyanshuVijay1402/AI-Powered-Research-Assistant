@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Research Assistant</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="welcome-screen" class="fade-in">
+    <h1>Welcome to <span class="highlight">AI-Powered Research Assistant</span></h1>
+    <p>Your personal academic paper search and summarization assistant</p>
+    <button id="get-started">🚀 Get Started</button>
+  </div>
+
+  <div id="main-app" class="hidden">
+    <div class="container">
+      <h1>📚 AI-Powered Research Assistant</h1>
+      <p class="subtitle">Enter a topic and discover top academic papers</p>
+      <form id="research-form">
+        <input type="text" id="topic-input" placeholder="Enter your research topic..." required />
+        <button type="submit">Generate Report</button>
+      </form>
+      <div id="result-section">
+        <h2>📝 Final Research Report</h2>
+        <div id="result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+document.getElementById("research-form").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  
+  const topic = document.getElementById("topic").value;
+  const resultDiv = document.getElementById("result");
+  const section = document.getElementById("result-section");
+
+  resultDiv.innerHTML = "⏳ Generating report, please wait...";
+  section.style.display = "block";
+
+  try {
+    const response = await fetch("http://localhost:5000/generate-report", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ topic })
+    });
+
+    const data = await response.json();
+    if (data.report) {
+      resultDiv.innerText = data.report;
+    } else {
+      resultDiv.innerText = "❌ Error: " + data.error;
+    }
+  } catch (error) {
+    resultDiv.innerText = "❌ Failed to connect to server.";
+  }
+});
+</script>
+<script>
+  async function generateReport() {
+    const userInput = document.getElementById("research-input").value.trim();
+    const resultSection = document.getElementById("result-section");
+    const resultContent = document.getElementById("result");
+
+    if (!userInput) {
+      alert("Please enter a research topic.");
+      return;
+    }
+
+    // Show loading state
+    resultContent.textContent = "🔎 Generating research report, please wait...";
+    resultSection.style.display = "block";
+
+    try {
+      const response = await fetch("http://localhost:5000/generate-report", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_input: userInput }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.report) {
+        // Show the report
+        resultContent.textContent = data.report;
+      } else {
+        // Show error message
+        resultContent.textContent = `Error: ${data.error || "Unknown error"}`;
+      }
+    } catch (error) {
+      resultContent.textContent = "Network error. Please try again later.";
+    }
+  }
+
+  // Attach event listener to button
+  document.getElementById("generate-btn").addEventListener("click", generateReport);
+  <div class="container">
+  <h1>AI-Powered Personal Research Assistant</h1>
+  <input type="text" id="research-input" placeholder="Enter research topic..." />
+  <button id="generate-btn">Generate Research Report</button>
+
+  <div id="result-section" style="display:none; margin-top: 20px;">
+    <h2>Research Report</h2>
+    <pre id="result" style="white-space: pre-wrap;"></pre>
+  </div>
+</div>
+
+</script>
+
+
+</body>
+</html>

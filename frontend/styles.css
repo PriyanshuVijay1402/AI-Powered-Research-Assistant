@@ -1,0 +1,176 @@
+#welcome-screen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: radial-gradient(circle at center, #3b82f6, #1e3a8a);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #f0f8ff;
+  padding: 2rem;
+  z-index: 100;
+  animation: fadeInWelcome 1.5s ease-out;
+  overflow: hidden;
+}
+
+#welcome-screen h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+#welcome-screen p {
+  font-size: 1.2rem;
+  color: #e0e7ff;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#welcome-screen .highlight {
+  color: #ffffff;
+  background: linear-gradient(to right, #60a5fa, #2563eb);
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+}
+
+#welcome-screen button {
+  margin-top: 2rem;
+  padding: 14px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background: #1e40af;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(30, 64, 175, 0.4);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#welcome-screen button:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+@keyframes fadeInWelcome {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  #welcome-screen h1 {
+    font-size: 2rem;
+  }
+
+  #welcome-screen p {
+    font-size: 1rem;
+  }
+
+  #welcome-screen button {
+    font-size: 1rem;
+    padding: 12px 24px;
+  }
+}
+
+#main-app {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: linear-gradient(to bottom right, #f0f4ff, #dbeafe);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  animation: fadeInMain 1s ease-in-out;
+}
+
+#main-app .app-container {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  animation: slideUp 0.7s ease;
+}
+
+#main-app h2 {
+  color: #1e3a8a;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+#main-app label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+#main-app input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  transition: 0.3s ease;
+}
+
+#main-app input[type="text"]:focus {
+  border-color: #1e40af;
+  outline: none;
+  box-shadow: 0 0 5px rgba(30, 64, 175, 0.3);
+}
+
+#main-app button {
+  padding: 12px 24px;
+  background: #1e3a8a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#main-app button:hover {
+  background: #1e40af;
+}
+
+@keyframes fadeInMain {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+
+
